@@ -2,6 +2,7 @@ package reservarestaurantes;
 
 import Interfaces.VistaBotones;
 import Interfaces.VistaCliente;
+import Interfaces.VistaMesas;
 import Interfaces.VistaReservas;
 import javax.swing.*;
 import java.awt.*;
@@ -15,14 +16,17 @@ public class ReservaRestaurantes extends javax.swing.JFrame {
 
         // Configurar el layout del panelContenedor
         panelContenedor.setLayout(new CardLayout());
-        panelContenedor.setBackground(Color.BLUE);
 
         // Agregar vistas al panelContenedor
         JPanel vistaCliente = new VistaCliente();
         JPanel otraVista = new VistaReservas(); // Otra vista para demostrar
+        JPanel vistaMesas = new VistaMesas();
+        
+        
 
         panelContenedor.add(vistaCliente, "VistaCliente"); // Agrega la vista del cliente
         panelContenedor.add(otraVista, "OtraVista"); // Agrega otra vista
+         panelContenedor.add(vistaMesas, "VistaMesas");
     }
 
     private void mostrarVista(String vista) {
@@ -36,6 +40,9 @@ public class ReservaRestaurantes extends javax.swing.JFrame {
     
     private void btnIrOtraVistaActionPerformed(java.awt.event.ActionEvent evt) {
         mostrarVista("OtraVista"); // Cambia a otra vista
+    }
+     private void btnVistaMesasActionPerformed(java.awt.event.ActionEvent evt) {
+        mostrarVista("VistaMesas"); // Cambia a otra vista
     }
 
     // Método generado por NetBeans
@@ -53,15 +60,21 @@ public class ReservaRestaurantes extends javax.swing.JFrame {
         // Configurar el panel de botones
         JButton btnVistaCliente = panelBotones.getjButton1();
         JButton btnOtraVista = panelBotones.getjButton2();
+        JButton btnVistaMesas = panelBotones.getjButton3();
+         
 
         // Agregar acción a los botones
         btnVistaCliente.addActionListener(this::btnIrVistaClienteActionPerformed);
         
         btnOtraVista.addActionListener(this::btnIrOtraVistaActionPerformed);
+        
+        btnVistaMesas.addActionListener(this::btnVistaMesasActionPerformed);
 
         // Añadir botones al panel de botones
         panelBotones.add(btnOtraVista);
         panelBotones.add(btnVistaCliente);
+        panelBotones.add(btnVistaMesas);
+        
 
         // Añadir paneles al JFrame
         add(panelContenedor, BorderLayout.CENTER); // Panel de contenido al centro
@@ -85,4 +98,5 @@ public class ReservaRestaurantes extends javax.swing.JFrame {
     // Variables de instancia
     private VistaBotones panelBotones; // Panel para los botones
     private JPanel panelContenedor; // Panel para el contenido
+    
 }

@@ -61,8 +61,9 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jButton1" min="-2" pref="143" max="-2" attributes="0"/>
                       <Component id="jButton2" alignment="0" min="-2" pref="143" max="-2" attributes="0"/>
+                      <Component id="jButton3" alignment="0" min="-2" pref="143" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="16" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -73,7 +74,9 @@
                   <Component id="jButton1" min="-2" pref="100" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   <Component id="jButton2" min="-2" pref="100" max="-2" attributes="0"/>
-                  <EmptySpace pref="279" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                  <Component id="jButton3" min="-2" pref="100" max="-2" attributes="0"/>
+                  <EmptySpace pref="140" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -93,6 +96,11 @@
         <Component class="javax.swing.JButton" name="jButton2">
           <Properties>
             <Property name="text" type="java.lang.String" value="Reservas"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButton3">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Mesas"/>
           </Properties>
         </Component>
       </SubComponents>
