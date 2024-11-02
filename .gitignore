@@ -1,1 +1,17 @@
 /build/
+
+# Ignorar archivos de configuración
+nbproject/private/private.properties
+nbproject/project.properties
+
+# Ignorar archivos de configuración de IDE
+*.iml
+.idea/
+*.class
+*.jar
+*.war
+*.log
+
+# Ignorar otros archivos temporales o de sistema
+.DS_Store
+Thumbs.db
