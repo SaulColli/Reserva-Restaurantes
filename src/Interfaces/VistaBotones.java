@@ -66,7 +66,7 @@ public class VistaBotones extends javax.swing.JPanel {
 
         jButton2.setText("Reservas");
 
-        jButton3.setText("Mesas");
+        jButton3.setText("Meseros");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

@@ -2,6 +2,7 @@ package reservarestaurantes;
 
 import Interfaces.VistaBotones;
 import Interfaces.VistaCliente;
+import Interfaces.VistaMesero;
 import Interfaces.VistaReservas;
 import javax.swing.*;
 import java.awt.*;
@@ -9,6 +10,7 @@ import java.awt.*;
 public class ReservaRestaurantes extends javax.swing.JFrame {
     JPanel vistaCliente;
     JPanel otraVista;
+    JPanel vistaMesero;
     
     public ReservaRestaurantes() {
         initComponents(); // Inicializa los componentes generados por NetBeans
@@ -21,9 +23,11 @@ public class ReservaRestaurantes extends javax.swing.JFrame {
         // Agregar vistas al panelContenedor
         vistaCliente = new VistaCliente();
         otraVista = new VistaReservas(); // Otra vista para demostrar
+        vistaMesero = new VistaMesero();
 
         panelContenedor.add(vistaCliente, "VistaCliente"); // Agrega la vista del cliente
         panelContenedor.add(otraVista, "OtraVista"); 
+        panelContenedor.add(vistaMesero, "VistaMesero");
         
 //        panelBotones.setPreferredSize(new Dimension(200, getHeight())); // Ancho fijo de 200px
         revalidate(); // Ajusta el layout
@@ -47,7 +51,11 @@ public class ReservaRestaurantes extends javax.swing.JFrame {
     private void btnIrOtraVistaActionPerformed(java.awt.event.ActionEvent evt) {
         mostrarVista("OtraVista"); // Cambia a otra vista
     }
-
+    
+    private void btnIrVistaMeseroActionPerformed(java.awt.event.ActionEvent evt) {
+        mostrarVista("VistaMesero"); // Cambia a otra vista
+    }
+        
     // Método generado por NetBeans
     private void initComponents() {
         //panelBotones = new javax.swing.JPanel();
@@ -63,14 +71,17 @@ public class ReservaRestaurantes extends javax.swing.JFrame {
         // Configurar el panel de botones
         JButton btnVistaCliente = panelBotones.getjButton1();
         JButton btnOtraVista = panelBotones.getjButton2();
-
+        JButton btnVistaMesero = panelBotones.getjButton3();
+        
         // Agregar acción a los botones
         btnVistaCliente.addActionListener(this::btnIrVistaClienteActionPerformed); // mUESTRA VISTA CLIENTE
         btnOtraVista.addActionListener(this::btnIrOtraVistaActionPerformed); // MUESTRA VISTA BOTONES
+        btnVistaMesero.addActionListener(this::btnIrVistaMeseroActionPerformed);
 
         // Añadir botones al panel de botones
         panelBotones.add(btnOtraVista);
         panelBotones.add(btnVistaCliente);
+        panelBotones.add(btnVistaMesero);
 
         // Añadir paneles al JFrame
         add(panelContenedor, BorderLayout.CENTER); // Panel de contenido al centro

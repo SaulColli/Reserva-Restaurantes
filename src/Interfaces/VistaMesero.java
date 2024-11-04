@@ -8,12 +8,12 @@ package Interfaces;
  *
  * @author noeal
  */
-public class VistaMesas extends javax.swing.JPanel {
+public class VistaMesero extends javax.swing.JPanel {
 
     /**
      * Creates new form VistaMesas
      */
-    public VistaMesas() {
+    public VistaMesero() {
         initComponents();
     }
 
@@ -173,7 +173,7 @@ public class VistaMesas extends javax.swing.JPanel {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("REGISTAR MESERO", jPanel1);
