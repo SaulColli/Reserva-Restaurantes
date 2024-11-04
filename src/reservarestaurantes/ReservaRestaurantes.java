@@ -2,13 +2,14 @@ package reservarestaurantes;
 
 import Interfaces.VistaBotones;
 import Interfaces.VistaCliente;
-import Interfaces.VistaMesas;
 import Interfaces.VistaReservas;
 import javax.swing.*;
 import java.awt.*;
 
 public class ReservaRestaurantes extends javax.swing.JFrame {
-
+    JPanel vistaCliente;
+    JPanel otraVista;
+    
     public ReservaRestaurantes() {
         initComponents(); // Inicializa los componentes generados por NetBeans
         setSize(1200, 600); // Establecer el tamaño del JFrame (ancho, alto)
@@ -18,15 +19,14 @@ public class ReservaRestaurantes extends javax.swing.JFrame {
         panelContenedor.setLayout(new CardLayout());
 
         // Agregar vistas al panelContenedor
-        JPanel vistaCliente = new VistaCliente();
-        JPanel otraVista = new VistaReservas(); // Otra vista para demostrar
-        JPanel vistaMesas = new VistaMesas();
-        
-        
+        vistaCliente = new VistaCliente();
+        otraVista = new VistaReservas(); // Otra vista para demostrar
 
         panelContenedor.add(vistaCliente, "VistaCliente"); // Agrega la vista del cliente
-        panelContenedor.add(otraVista, "OtraVista"); // Agrega otra vista
-         panelContenedor.add(vistaMesas, "VistaMesas");
+        panelContenedor.add(otraVista, "OtraVista"); 
+        
+//        panelBotones.setPreferredSize(new Dimension(200, getHeight())); // Ancho fijo de 200px
+        revalidate(); // Ajusta el layout
     }
 
     private void mostrarVista(String vista) {
@@ -36,13 +36,16 @@ public class ReservaRestaurantes extends javax.swing.JFrame {
 
     private void btnIrVistaClienteActionPerformed(java.awt.event.ActionEvent evt) {                                                  
         mostrarVista("VistaCliente"); // Cambia a la vista de cliente
+//        setSize(vistaCliente.getWidth()+panelBotones.getWidth(), vistaCliente.getHeight());
+//        
+//        System.out.println(panelContenedor.getSize());
+//        System.out.println(panelBotones.getSize());
+//        System.out.println(getSize());
+//        System.out.println(vistaCliente.getSize());
     }
     
     private void btnIrOtraVistaActionPerformed(java.awt.event.ActionEvent evt) {
         mostrarVista("OtraVista"); // Cambia a otra vista
-    }
-     private void btnVistaMesasActionPerformed(java.awt.event.ActionEvent evt) {
-        mostrarVista("VistaMesas"); // Cambia a otra vista
     }
 
     // Método generado por NetBeans
@@ -60,21 +63,14 @@ public class ReservaRestaurantes extends javax.swing.JFrame {
         // Configurar el panel de botones
         JButton btnVistaCliente = panelBotones.getjButton1();
         JButton btnOtraVista = panelBotones.getjButton2();
-        JButton btnVistaMesas = panelBotones.getjButton3();
-         
 
         // Agregar acción a los botones
-        btnVistaCliente.addActionListener(this::btnIrVistaClienteActionPerformed);
-        
-        btnOtraVista.addActionListener(this::btnIrOtraVistaActionPerformed);
-        
-        btnVistaMesas.addActionListener(this::btnVistaMesasActionPerformed);
+        btnVistaCliente.addActionListener(this::btnIrVistaClienteActionPerformed); // mUESTRA VISTA CLIENTE
+        btnOtraVista.addActionListener(this::btnIrOtraVistaActionPerformed); // MUESTRA VISTA BOTONES
 
         // Añadir botones al panel de botones
         panelBotones.add(btnOtraVista);
         panelBotones.add(btnVistaCliente);
-        panelBotones.add(btnVistaMesas);
-        
 
         // Añadir paneles al JFrame
         add(panelContenedor, BorderLayout.CENTER); // Panel de contenido al centro
@@ -98,5 +94,4 @@ public class ReservaRestaurantes extends javax.swing.JFrame {
     // Variables de instancia
     private VistaBotones panelBotones; // Panel para los botones
     private JPanel panelContenedor; // Panel para el contenido
-    
 }
