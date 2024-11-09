@@ -6,6 +6,8 @@ import Interfaces.VistaMesero;
 import Interfaces.VistaReservas;
 import javax.swing.*;
 import java.awt.*;
+import config.ConexionSQLServer;
+import java.sql.SQLException;
 
 public class ReservaRestaurantes extends javax.swing.JFrame {
     JPanel vistaCliente;
@@ -92,6 +94,14 @@ public class ReservaRestaurantes extends javax.swing.JFrame {
     
     public static void main(String[] args) {
         System.out.println("Hola mundooooo");
+        ConexionSQLServer db = new ConexionSQLServer();
+        try{
+            db.Conectar();
+        } catch(Exception ex)
+        {
+            System.out.println(ex.getMessage());
+        }
+        
         // TODO code application logic here
         SwingUtilities.invokeLater(new Runnable() {
             @Override

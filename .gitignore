@@ -5,6 +5,7 @@
 # Ignorar configuraciones de usuario específicas de NetBeans
 nbproject/private/
 nbproject/private.properties
+nbproject/private/private.xml
 nbproject/genfiles.properties
 nbproject/vars.properties
 
@@ -12,3 +13,4 @@ nbproject/vars.properties
 *.class
 *.log
 *.tmp
+config.properties
