@@ -19,8 +19,10 @@ public class ConexionSQLServer {
     public ConexionSQLServer(){    
     }
     
-    public void Conectar() throws ClassNotFoundException, SQLException{
+    public Connection Conectar() throws ClassNotFoundException, SQLException{
+        
         ConfigLoader config = new ConfigLoader();
+        
         
         String database = config.getenv("DB_NAME");
         String server = config.getenv("DB_SERVER");
@@ -29,17 +31,27 @@ public class ConexionSQLServer {
         String port = config.getenv("DB_PORT");
         System.out.println(port);
         System.out.println(database);
+        Connection con = null;
         
-        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        String connectionURL = "jdbc:sqlserver://" + server + ":" + port +";databaseName=" + database + ";user=" + user +";password=" + password;
-        System.out.println(connectionURL);
-        Connection con = DriverManager.getConnection(connectionURL);
-        System.out.println("Nos conectamos");
+        try{
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            String connectionURL = "jdbc:sqlserver://" + server + ":" + port +";databaseName=" + database + ";user=" + user +";password=" + password + ";encrypt=true;trustServerCertificate=true";
+            System.out.println(connectionURL);
+            con = DriverManager.getConnection(connectionURL);
+            System.out.println("Nos conectamos");
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        return con;
         
+        /*
         Statement st = con.createStatement(); 
         ResultSet rs = st.executeQuery("SELECT * FROM Cliente");
         
         
         System.out.print(rs.next());
+        System.out.println(rs.getString("Nombre"));
+*/
     }
 }

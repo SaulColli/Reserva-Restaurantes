@@ -10,6 +10,7 @@ public class ConfigLoader {
     public ConfigLoader() {
         try (FileInputStream input = new FileInputStream("config.properties")) {
             properties.load(input);
+            
         } catch (IOException e) {
             System.out.println("Error al cargar archivo de configuración: " + e.getMessage());
         }
