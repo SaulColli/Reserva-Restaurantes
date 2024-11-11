@@ -26,6 +26,25 @@ public class SistemaReserva {
     public SistemaReserva(){
     } 
     
+    public int inputEntero(String mensaje){
+        String input = "";
+        boolean esNumeroValido = false;
+
+        while (!esNumeroValido) {
+            input = JOptionPane.showInputDialog(mensaje);
+
+            // Verificar que la entrada no sea nula y que sea numérica
+            if (input != null && input.matches("\\d+")) {
+                esNumeroValido = true;
+            } else {
+                JOptionPane.showMessageDialog(null, "Por favor, ingrese un número válido.");
+            }
+        }
+
+        int idCliente = Integer.parseInt(input);
+        return idCliente;
+    }
+    
     public void crearCliente(String nombre, String primerApe, String segundoApe, String telefono,int tipo){
         ConexionSQLServer con = new ConexionSQLServer();
         String sqlCrear = "INSERT INTO Cliente VALUES(?,?,?,?,?)";
@@ -252,6 +271,26 @@ public class SistemaReserva {
         } catch (SQLException ex) {
             Logger.getLogger(SistemaReserva.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, "Error al registrar el mesero. Error en el query");
+        }
+    }
+    
+    public void eliminarCliente(int idCliente){
+        ConexionSQLServer con = new ConexionSQLServer();
+        String sqlCrear = "DELETE FROM Cliente WHERE IdCliente =?";
+        
+        try {
+            Connection cn = con.Conectar();
+            PreparedStatement pst = cn.prepareStatement(sqlCrear);
+            pst.setInt(1, idCliente);
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(null, "El cliente ha sido eliminado");
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(SistemaReserva.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Error al intentar eliminar el cliente");
+        } catch (SQLException ex) {
+            Logger.getLogger(SistemaReserva.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Error al intentar eliminar el cliente. Error en el query");
         }
     }
 }
