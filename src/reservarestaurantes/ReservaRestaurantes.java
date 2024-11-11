@@ -35,13 +35,28 @@ public class ReservaRestaurantes extends javax.swing.JFrame {
         revalidate(); // Ajusta el layout
     }
 
-    private void mostrarVista(String vista) {
+    public void mostrarVista(String nombreVista, JPanel nuevaVista) {
+        // Obtener el CardLayout y el panelContenedor
         CardLayout layout = (CardLayout) panelContenedor.getLayout();
-        layout.show(panelContenedor, vista); // Cambia la vista según el nombre proporcionado
+
+        // Remover la vista actual, si existe
+        panelContenedor.removeAll();
+
+        // Crear la nueva instancia de la vista a mostrar
+        panelContenedor.add(nuevaVista, "VistaReserva"); // Agregar la nueva vista al panelContenedor
+
+        // Hacer que el CardLayout muestre la nueva vista
+        layout.show(panelContenedor, nombreVista);
+
+        // Opcionalmente, si necesitas hacer un refresh de la vista, puedes usar revalidate y repaint
+        nuevaVista.revalidate();
+        nuevaVista.repaint();
     }
 
-    private void btnIrVistaClienteActionPerformed(java.awt.event.ActionEvent evt) {                                                  
-        mostrarVista("VistaCliente"); // Cambia a la vista de cliente
+
+    private void btnIrVistaClienteActionPerformed(java.awt.event.ActionEvent evt) {         
+        vistaCliente = new VistaCliente();
+        mostrarVista("VistaCliente", vistaCliente); // Cambia a la vista de cliente
 //        setSize(vistaCliente.getWidth()+panelBotones.getWidth(), vistaCliente.getHeight());
 //        
 //        System.out.println(panelContenedor.getSize());
@@ -51,11 +66,13 @@ public class ReservaRestaurantes extends javax.swing.JFrame {
     }
     
     private void btnIrOtraVistaActionPerformed(java.awt.event.ActionEvent evt) {
-        mostrarVista("OtraVista"); // Cambia a otra vista
+        otraVista = new VistaReservas();
+        mostrarVista("OtraVista", otraVista); // Cambia a otra vista
     }
     
     private void btnIrVistaMeseroActionPerformed(java.awt.event.ActionEvent evt) {
-        mostrarVista("VistaMesero"); // Cambia a otra vista
+        vistaMesero = new VistaMesero();
+        mostrarVista("VistaMesero", vistaMesero); // Cambia a otra vista
     }
         
     // Método generado por NetBeans
