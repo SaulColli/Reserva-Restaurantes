@@ -231,5 +231,28 @@ public class SistemaReserva {
         System.out.println("Y");
         return clientes;
     }
+    
+    public void crearMesero(String nombre, String primerApe, String turno, String segundoApe){
+        ConexionSQLServer con= new ConexionSQLServer();
+        String sqlCrear = "INSERT INTO Mesero VALUES(?,?,?,?)";
+        
+        try {
+            Connection cn = con.Conectar();
+            PreparedStatement pst = cn.prepareStatement(sqlCrear);
+            pst.setString(1, nombre);
+            pst.setString(2, primerApe);
+            pst.setString(3, turno);
+            pst.setString(4, segundoApe);
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(null, "El mesero ha sido registado");
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(SistemaReserva.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Error al registrar al mesero");
+        } catch (SQLException ex) {
+            Logger.getLogger(SistemaReserva.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Error al registrar el mesero. Error en el query");
+        }
+    }
 }
 
