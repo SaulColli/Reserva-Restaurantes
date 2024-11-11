@@ -8,6 +8,8 @@ import javax.swing.*;
 import java.awt.*;
 import config.ConexionSQLServer;
 import java.sql.SQLException;
+import java.util.logging.Logger;
+import javax.swing.plaf.metal.MetalLookAndFeel;
 
 public class ReservaRestaurantes extends javax.swing.JFrame {
     JPanel vistaCliente;
@@ -110,12 +112,29 @@ public class ReservaRestaurantes extends javax.swing.JFrame {
     }
     
     public static void main(String[] args) { 
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(ReservaRestaurantes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(ReservaRestaurantes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(ReservaRestaurantes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(ReservaRestaurantes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
         // TODO code application logic here
-        SwingUtilities.invokeLater(new Runnable() {
+        java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                ReservaRestaurantes vista = new ReservaRestaurantes();
-                vista.setVisible(true);
+                
+                
+                new ReservaRestaurantes().setVisible(true);
             }
         });
     }
