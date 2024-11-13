@@ -293,5 +293,24 @@ public class SistemaReserva {
             JOptionPane.showMessageDialog(null, "Error al intentar eliminar el cliente. Error en el query");
         }
     }
+    public void eliminarMesero(int idMesero){
+        ConexionSQLServer con = new ConexionSQLServer();
+        String sqlCrear = "DELETE FROM Mesero WHERE IdMesero =?";
+        
+        try {
+            Connection cn = con.Conectar();
+            PreparedStatement pst = cn.prepareStatement(sqlCrear);
+            pst.setInt(1, idMesero);
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(null, "El mesero ha sido eliminado");
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(SistemaReserva.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Error al intentar eliminar al mesero");
+        } catch (SQLException ex) {
+            Logger.getLogger(SistemaReserva.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Error al intentar eliminar al mesero. Error en el query");
+        }
+    }
 }
 
